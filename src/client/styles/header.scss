@@ -1,0 +1,23 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+}
+
+a {
+    text-decoration: none;
+    color: #3c4a47;
+}
+
+.nav-ul {
+    display: flex;
+}
+
+.nav-link {
+    margin: 0 10px;
+    
+}
+
+.nav-link:hover {
+    border-bottom: 2px solid #3c4a47;
+}

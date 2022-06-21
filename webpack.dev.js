@@ -5,6 +5,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
     entry: './src/client/index.js',
+    output: {
+        libraryTarget: 'var',
+        library: 'Client'
+    },
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
@@ -13,9 +17,20 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader"
-            }
-        ]
+                use: {
+                loader: "babel-loader",
+                options: {
+                    presets: [
+                        ['@babel/preset-env', { targets: "defaults" }]
+                    ]
+                  }
+                }
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ],
+            },
+        ],
     },
     plugins: [
         new HtmlWebPackPlugin({
@@ -30,6 +45,7 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
-        })
-    ]
+        }),
+
+    ],
 }
