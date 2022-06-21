@@ -29,8 +29,10 @@ module.exports = {
             filename: "./index.html",
         }),
         new WorkboxPlugin.GenerateSW({
-            swDest: './dist/sw.js'
-          })
+            swDest: './dist/sw.js',
+            clientsClaim: true,
+            skipWaiting: true,
+          }),
 
     ],
 }
